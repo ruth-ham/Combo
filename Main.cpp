@@ -1,8 +1,8 @@
-/*                                                                            
+/*
     Copyright 2014
     Alexander Belyi <alexander.belyi@gmail.com>,
-    Stanislav Sobolevsky <stanly@mit.edu>                                               
-                                                                            
+    Stanislav Sobolevsky <stanly@mit.edu>
+
     This is the main file of Combo algorithm.
 
     Combo is free software: you can redistribute it and/or modify
@@ -209,7 +209,7 @@ double Split(vector< vector<double> >& Q, const vector<double>& correctionVector
 
 	if(fabs(mod_gain) < THRESHOLD)
 		splitCommunity.assign(n, 1);
-	
+
 	return mod_gain;
 }
 
@@ -270,7 +270,7 @@ void RunCombo(Graph& G, int max_comunities)
 	G.SetCommunities(vector<int>(G.Size(), 0));
 	double currentMod = G.Modularity();
 	//printf("Initial modularity: %6f\n", currentMod);
-	vector< vector<double> > moves(2, vector<double>(2, 0)); //results of splitting communities 
+	vector< vector<double> > moves(2, vector<double>(2, 0)); //results of splitting communities
 	//vectors of boolean meaning that corresponding vertex should be moved to dest
 	vector< vector<int> > splits_communities(2, vector<int>(G.Size(), 0)); //best split vectors
 
