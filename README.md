@@ -1,0 +1,49 @@
+# Combo
+
+This is an implementation (for Modularity maximization) of the community
+detection algorithm called "Combo" described in the paper "General optimization
+technique for high-quality community detection in complex networks" by
+Stanislav Sobolevsky, Riccardo Campari, Alexander Belyi and Carlo Ratti.
+Please, send your feedback, bug reports and questions to:
+
+alexander.belyi@gmail.com
+
+If you use this code, please, cite:
+
+```
+Sobolevsky S., Campari R., Belyi A., and Ratti C. "General optimization
+technique for high-quality community detection in complex networks" Phys. Rev.
+E 90, 012811
+```
+
+## Running
+
+First you'll need to compile the program. If you're on a Linux/Mac box, make
+sure you have `g++` installed, and then run
+
+```
+make
+```
+
+Once compiled, you can run the program with
+
+```
+./comboCPP path_to_network_file.net [max_number_of_communities]
+```
+
+The options are as follows:
+* `path_to_network_file` - path to the file in Pajek .net format
+* `max_number_of_communities` - maximal number of communities to be found
+  (the default is infinite)
+
+For example, you can make sure the compilation worked correctly by running:
+```
+./comboCPP karate.net
+```
+on the included `karate.net` file.
+
+## The Output
+
+The program outputs one file named `path_to_network_file_comm_comboC++.txt`
+containing numbers of communities for each vertex on separete line.  And it
+writes achieved modularity score to standart output.
