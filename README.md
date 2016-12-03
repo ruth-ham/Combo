@@ -1,5 +1,15 @@
 # Combo
 
+I came across this neat tool in reading Alasdair Rae and Garrett Dash Nelson's
+beautiful [An Economic Geography of the United States: From Commutes to
+Megaregions](http://journals.plos.org/plosone/article?id=10.1371/journal.pone.0166083)
+in _PLOS One_. Unfortunately, the code wasn't contained in a repository
+anywhere, only available in `zip` form from the [Senseable
+Cities](http://senseable.mit.edu/community_detection/) website. For my ease, I
+put it here. What follows is more or less their original README.
+
+## Description
+
 This is an implementation (for Modularity maximization) of the community
 detection algorithm called "Combo" described in the paper "General optimization
 technique for high-quality community detection in complex networks" by
