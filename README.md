@@ -21,9 +21,7 @@ alexander.belyi@gmail.com
 If you use this code, please, cite:
 
 ```
-Sobolevsky S., Campari R., Belyi A., and Ratti C. "General optimization
-technique for high-quality community detection in complex networks" Phys. Rev.
-E 90, 012811
+Sobolevsky S., Campari R., Belyi A., and Ratti C. "General optimization technique for high-quality community detection in complex networks" Phys. Rev. E 90, 012811
 ```
 
 ## Running
