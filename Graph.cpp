@@ -67,7 +67,7 @@ void Graph::FillMatrix(const vector<int>& src, const vector<int>& dst, const vec
 	}
 }
 
-void Graph::FillModMatrix(const vector<int>& src, const vector<int>& dst, const vector<double>& weight)
+void Graph::FillModMatrix(const vector<int>& src, const vector<int>& dst, const vector<double>& weight, double mod_resolution)
 {
 	int m = min(*min_element(src.begin(), src.end()), *min_element(dst.begin(), dst.end()));
 	if(m > 0)
@@ -94,13 +94,13 @@ void Graph::FillModMatrix(const vector<int>& src, const vector<int>& dst, const 
 	}
 	for(int i = 0; i < m_size; ++i)
 		for(int j = 0; j < m_size; ++j)
-			m_modMatrix[i][j] -= sumQ1[i]*sumQ2[j];
+			m_modMatrix[i][j] -= mod_resolution * sumQ1[i]*sumQ2[j];
 	for(int i = 0; i < m_size; ++i)
 		for(int j = 0; j < m_size; ++j)
 			m_modMatrix[i][j] = m_modMatrix[j][i] = (m_modMatrix[i][j] + m_modMatrix[j][i]) / 2;
 }
 
-void Graph::ReadFromEdgelist(const std::string& fname)
+void Graph::ReadFromEdgelist(const std::string& fname, double mod_resolution)
 {
 	ifstream file(fname.c_str());
 	if(!file.is_open())
@@ -123,10 +123,10 @@ void Graph::ReadFromEdgelist(const std::string& fname)
 		}
 	}
 	file.close();
-	FillModMatrix(src, dst, weight);
+	FillModMatrix(src, dst, weight, mod_resolution);
 }
 
-void Graph::ReadFromPajeck(const std::string& fname)
+void Graph::ReadFromPajeck(const std::string& fname, double mod_resolution)
 {
 	ifstream file(fname.c_str());
 	if(!file.is_open())
@@ -139,12 +139,18 @@ void Graph::ReadFromPajeck(const std::string& fname)
 		char buff[256];
 		file.getline(buff, 255);
 		string line = buff;
-		if(line == "*Edges")
+
+		// Strip carriage return on Windows
+		if(line[line.length() - 1] == '\r') {
+			line = line.substr(0, line.length() - 1);
+		}
+
+		if(line == "*Edges" || line == "*edges")
 		{
 			skip = false;
 			m_isOriented = false;
 		}
-		else if(line == "*Arcs")
+		else if(line == "*Arcs" || line == "*arcs")
 		{
 			skip = false;
 			m_isOriented = true;
@@ -164,7 +170,7 @@ void Graph::ReadFromPajeck(const std::string& fname)
 		}
 	}
 	file.close();
-	FillModMatrix(src, dst, weight);
+	FillModMatrix(src, dst, weight, mod_resolution);
 }
 
 double Graph::EdgeWeight(int i, int j) const

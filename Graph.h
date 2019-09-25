@@ -31,8 +31,8 @@ public:
 	Graph(void);
 	virtual ~Graph(void);
 
-	void ReadFromEdgelist(const std::string& fname);
-	void ReadFromPajeck(const std::string& fname);
+	void ReadFromEdgelist(const std::string& fname, double mod_resolution);
+	void ReadFromPajeck(const std::string& fname, double mod_resolution);
 	void CalcModMtrix();
 
 	int Size() const {return m_size;}
@@ -55,7 +55,7 @@ public:
 
 private:
 	void FillMatrix(const std::vector<int>& src, const std::vector<int>& dst, const std::vector<double>& weight);
-	void FillModMatrix(const std::vector<int>& src, const std::vector<int>& dst, const std::vector<double>& weight);
+	void FillModMatrix(const std::vector<int>& src, const std::vector<int>& dst, const std::vector<double>& weight, double mod_resolution);
 
 private:
 	int m_size;

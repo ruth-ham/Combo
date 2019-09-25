@@ -41,6 +41,10 @@ const double autoC1 = 2;
 const double autoC2 = 1.5;
 bool use_fixed_tries = false;
 
+// Modularity Resolution Parameter
+// as per Newman 2016 (https://journals.aps.org/pre/abstract/10.1103/PhysRevE.94.052315)
+double mod_resolution = 1.0;
+
 double best_gain = 1.0;
 
 vector<double> Sum(const vector< vector<double> >& matrix)
@@ -336,8 +340,12 @@ int main(int argc, char** argv)
 		if(string(argv[2]) != "INF")
 		max_comunities = atoi(argv[2]);
 	}
-	if(argc > 3)
-		use_fixed_tries = atoi(argv[3]);
+	if(argc > 3) 
+	{
+		mod_resolution = atof(argv[3]);
+	}
+	if(argc > 4)
+		use_fixed_tries = atoi(argv[4]);
 
 
 	string fileName = argv[1];
@@ -346,9 +354,9 @@ int main(int argc, char** argv)
 	Graph G;
 	string ext = fileName.substr(fileName.rfind('.'), fileName.length() - fileName.rfind('.'));
 	if(ext == ".edgelist")
-		G.ReadFromEdgelist(fileName);
+		G.ReadFromEdgelist(fileName, mod_resolution);
 	else if(ext == ".net")
-		G.ReadFromPajeck(fileName);
+		G.ReadFromPajeck(fileName, mod_resolution);
 	if(G.Size() <= 0)
 	{
 		cout << "Error: graph is empty" << endl;
