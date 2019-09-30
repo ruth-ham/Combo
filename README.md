@@ -36,13 +36,14 @@ make
 Once compiled, you can run the program with
 
 ```
-./comboCPP path_to_network_file.net [max_number_of_communities]
+./comboCPP path_to_network_file.net [max_number_of_communities] [mod_resolution]
 ```
 
 The options are as follows:
 * `path_to_network_file` - path to the file in Pajek .net format
 * `max_number_of_communities` - maximal number of communities to be found
-  (the default is infinite)
+  (default is "INF" for infinite)
+* `mod_resolution` - modularity resolution parameter (default is 1)
 
 For example, you can make sure the compilation worked correctly by running:
 ```
