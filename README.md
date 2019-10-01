@@ -44,6 +44,7 @@ The options are as follows:
 * `max_number_of_communities` - maximal number of communities to be found
   (default is "INF" for infinite)
 * `mod_resolution` - modularity resolution parameter (default is 1)
+* `file_suffix` - suffix appended to output file (default is "comm_comboC++")
 
 For example, you can make sure the compilation worked correctly by running:
 ```
@@ -53,6 +54,6 @@ on the included `karate.net` file.
 
 ## The Output
 
-The program outputs one file named `path_to_network_file_comm_comboC++.txt`
+The program outputs one file named `path_to_network_file_<file_suffix>.txt`
 containing numbers of communities for each vertex on separete line.  And it
 writes achieved modularity score to standart output.

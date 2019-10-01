@@ -330,6 +330,7 @@ void RunCombo(Graph& G, int max_comunities)
 int main(int argc, char** argv)
 {
 	int max_comunities = INF;
+	string file_suffix = "comm_comboC++";
 	if(argc < 2)
 	{
 		cout << "Error: provide path to edge list (.edgelist) or pajeck (.net) file" << endl;
@@ -344,8 +345,12 @@ int main(int argc, char** argv)
 	{
 		mod_resolution = atof(argv[3]);
 	}
-	if(argc > 4)
-		use_fixed_tries = atoi(argv[4]);
+	if(argc > 4) 
+	{
+		file_suffix = argv[4];
+	}
+	if(argc > 5)
+		use_fixed_tries = atoi(argv[5]);
 
 
 	string fileName = argv[1];
@@ -369,7 +374,7 @@ int main(int argc, char** argv)
 	//cout << fileName << " " << G.Modularity() << endl;
 	//cout << "Elapsed time is " << (double(clock() - startTime)/CLOCKS_PER_SEC) << endl;
 
-	G.PrintCommunity(fileName.substr(0, fileName.rfind('.')) + "_comm_comboC++.txt");
+	G.PrintCommunity(fileName.substr(0, fileName.rfind('.')) + "_" + file_suffix + ".txt");
 	cout << G.Modularity() << endl;
 	return 0;
 }
