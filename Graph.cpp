@@ -34,6 +34,7 @@ using std::vector;
 using std::set;
 using std::max;
 using std::cout;
+using std::cerr;
 using std::endl;
 using std::min;
 
