@@ -112,11 +112,12 @@ double PerformKernighansShift(const vector< vector<double> >& Q, const vector<do
 	for(int i = 0; i < n; ++i)
 	{
 		for(int j = 0; j < n; ++j)
-			if(i != j)
+			if(i != j) {
 				if(communitiesOld[i] == communitiesOld[j])
 					gains[i] -= Q[i][j];
 				else
 					gains[i] += Q[i][j];
+			}
 		if(communitiesOld[i])
 			gains[i] -= correctionVector[i];
 		else
@@ -274,7 +275,7 @@ void RunCombo(Graph& G, int max_comunities)
 	G.CalcModMtrix();
 	G.SetCommunities(vector<int>(G.Size(), 0));
 	double currentMod = G.Modularity();
-	//printf("Initial modularity: %6f\n", currentMod);
+	printf("Initial moxdularity: %6f\n", currentMod);
 	vector< vector<double> > moves(2, vector<double>(2, 0)); //results of splitting communities
 	//vectors of boolean meaning that corresponding vertex should be moved to dest
 	vector< vector<int> > splits_communities(2, vector<int>(G.Size(), 0)); //best split vectors
@@ -333,7 +334,7 @@ int main(int argc, char** argv)
 	string file_suffix = "comm_comboC++";
 	if(argc < 2)
 	{
-		cout << "Error: provide path to edge list (.edgelist) or pajeck (.net) file" << endl;
+		cerr << "Error: provide path to edge list (.edgelist) or pajeck (.net) file" << endl;
 		return -1;
 	}
 	if(argc > 2)
@@ -364,7 +365,7 @@ int main(int argc, char** argv)
 		G.ReadFromPajeck(fileName, mod_resolution);
 	if(G.Size() <= 0)
 	{
-		cout << "Error: graph is empty" << endl;
+		cerr << "Error: graph is empty" << endl;
 		return -1;
 	}
 
