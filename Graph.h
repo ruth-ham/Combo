@@ -65,5 +65,8 @@ private:
 	std::vector<std::vector<double> > m_matrix;
 	std::vector<std::vector<double> > m_modMatrix;
 	std::vector<int> m_communities;
+	//added the next lines (RBH)
+	std::vector<int> m_vert; //holds vertices index
+	std::vector<std::string> m_label; //holds vertices label
 };
 
