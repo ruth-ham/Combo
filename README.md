@@ -3,7 +3,7 @@ Since it has been a while since I used the programme, I have started afresh by c
 
 *My contribution in this repository is to add some code that reads in the vertex labels (if using a Pajeck file format) and adds the labels to the output file. The output file now prints the intitial vertex label and the community number it bleongs to.*
 
-* *Hamilton, R. and Rae, A., 2020. Regions from the ground up: a network partitioning approach to regional delineation. Environment and planning B: urban analytics and city science, 47(5), pp.775-789.*
+* \*Hamilton, R. and Rae, A., 2020. Regions from the ground up: a network partitioning approach to regional delineation. Environment and planning B: urban analytics and city science, 47(5), pp.775-789.*
 
 
 # Combo
