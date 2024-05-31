@@ -1,5 +1,5 @@
-I worked with Alasdair Rae on an application of Combo to commuting data in Scotland. I have recently revisted the tool with the aim of making some adjustments to the output files.
-Since it has been a while since I used the programme, I have started afresh by cloning the repository from Casyfill and Express50, whose orginial readme is included below...
+*I worked with Alasdair Rae on an application of Combo to commuting data in Scotland. I have recently revisted the tool with the aim of making some adjustments to the output files.
+Since it has been a while since I used the programme, I have started afresh by cloning the repository from Casyfill and Express50, whose orginial readme is included below...*
 
 
 # Combo
