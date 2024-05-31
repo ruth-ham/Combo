@@ -126,6 +126,7 @@ void Graph::ReadFromEdgelist(const std::string& fname, double mod_resolution)
 	FillModMatrix(src, dst, weight, mod_resolution);
 }
 
+//edited ReadFromPajeck to read in vertex labels
 void Graph::ReadFromPajeck(const std::string& fname, double mod_resolution)
 {
 	ifstream file(fname.c_str());
@@ -133,39 +134,56 @@ void Graph::ReadFromPajeck(const std::string& fname, double mod_resolution)
 		return;
 	vector<int> src, dst;
 	vector<double> weight;
+	
+	
 	bool skip = true;
 	while(file.good())
 	{
 		char buff[256];
 		file.getline(buff, 255);
 		string line = buff;
-
+		
 		// Strip carriage return on Windows
 		if(line[line.length() - 1] == '\r') {
 			line = line.substr(0, line.length() - 1);
 		}
+		
 
-		if(line == "*Edges" || line == "*edges")
+		
+		if(line.substr(0,5) == "*Edges" || line.substr(0,5) == "*edges" || line.substr(0,5) == "*Vert")
 		{
 			skip = false;
 			m_isOriented = false;
+			//printf("edge row \n");
 		}
 		else if(line == "*Arcs" || line == "*arcs")
 		{
 			skip = false;
 			m_isOriented = true;
+			//printf("arc row \n");
 		}
 		else if(!skip)
 		{
+			//std::cout << line << std::endl;
 			int s = -1, d = -1;
+			int v = -1;
+			char l[256];
 			double w = 1.0;
 			sscanf(buff, "%d %d %lf", &s, &d, &w);
-			if(s != -1 && d != -1)
+			if(s!= -1 && d == - 1)
+			{
+				sscanf(buff, "%d %s", &v ,l);
+				m_vert.push_back(v);
+				m_label.push_back(l);
+				//std::cout << l << std::endl;
+			}
+			else if(s != -1 && d != -1)
 			{
 				src.push_back(s);
 				dst.push_back(d);
 				weight.push_back(w);
 				m_totalWeight += w;
+				//printf("read row \n");
 			}
 		}
 	}
@@ -232,7 +250,7 @@ void Graph::PrintCommunity(const string& fileName) const
 	if(!file.is_open())
 		return;
 	for(int i = 0; i < m_size; ++i)
-		file << m_communities[i] << endl;
+		file <<  m_label[i] << " " << m_communities[i]  << endl;
 	file.close();
 }
 
