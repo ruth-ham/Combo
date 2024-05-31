@@ -1,3 +1,7 @@
+I worked with Alasdair Rae on an application of Combo to commuting data in Scotland. I have recently revisted the tool with the aim of making some adjustments to the output files.
+SInce it has been a wile since I used the programme, I have cloned the repository from Casyfill and Express50, whose orginial readme is included below...
+
+
 # Combo
 
 I came across this neat tool in reading Alasdair Rae and Garrett Dash Nelson's
